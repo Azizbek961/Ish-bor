@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asosiy sahifa - Ish Bor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .choice-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .choice-btn:hover {
+            transform: scale(1.05);
+        }
+        .employer {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .job-seeker {
+            background-color: #2196F3;
+            color: white;
+        }
+        .logout-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+        }
+        .logout-link:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Xush kelibsiz, {{ user.username }}!</h1>
+        <p>Quyidagilardan birini tanlang:</p>
+
+        <div class="choices">
+            <a href="{% url 'login:employer' %}">
+                <button class="choice-btn employer">
+                    Ish berish
+                </button>
+            </a>
+
+            <a href="{% url 'login:job_seeker' %}">
+                <button class="choice-btn job-seeker">
+                    Ish qidirish
+                </button>
+            </a>
+        </div>
+
+        <a href="{% url 'login:logout' %}" class="logout-link">
+            Tizimdan chiqish
+        </a>
+    </div>
+</body>
+</html>
